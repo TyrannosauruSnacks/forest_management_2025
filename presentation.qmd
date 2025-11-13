@@ -1,0 +1,40 @@
+---
+title: "Forest Management and Modeling"
+author: "Max Hachemeister"
+format:
+  revealjs:
+    toc: true
+    transition: slide
+    reference-location: document
+    bibliography: references.bib
+---
+
+# The stand
+
+## Species and Structure
+
+| Species        | \~Age (Years) | N / ha | G (m²) | Misc          |
+|----------------|---------------|--------|--------|---------------|
+| Scots Pine     | 120           | 282    | 31     | Dominant      |
+| European Beech | 60            | 525    | 9      | Second Layer  |
+| Norway Spruce  | 40            | 525    | .6     | Planted Group |
+| Sessile Oak    | 40            | 18     | .2     | Single Trees  |
+
+## Climate and nutrition
+
+| Parameter       | Value    | Misc                   |
+|-----------------|----------|------------------------|
+| Growth District | 99.10.19 | Tramper Platte         |
+| Soil freshness  | m        | Medium fresh           |
+| Nutrition       | M2       | Slightly better Medium |
+
+## Mixture Recommendation
+
+[Brandenburg Species Mixture Recommendation](https://www.brandenburg-forst.de/bmt/baumartenmischungstabelle.pdf)
+
+| Species        | Mixture class |
+|----------------|---------------|
+| Scots pine     | \> 50 %       |
+| European Beech | \> 50 %       |
+| Norway Spruce  | 0 %           |
+| Sessile Oak    | \> 50 %       |
