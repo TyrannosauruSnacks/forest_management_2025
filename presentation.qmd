@@ -1,24 +1,40 @@
 ---
 title: "Forest Management and Modeling"
-author: "Max Hachemeister"
+author: "Max Hachemeister, Aparna Ajayan, Olajide Faneye"
 format:
   revealjs:
     toc: true
+    toc-depth: 1
     transition: slide
-    reference-location: document
     bibliography: references.bib
 ---
 
-# The stand
+# Instructions
+
+-   Every first or second level heading makes a new slide
+
+-   No more than 7 to 8 lines per Slide
+
+-   Insert images
+
+    -   upload them into the "images" folder
+
+    -   add from there
+
+-   The slides will basically look like this document already does.
+
+-   I will fit it all for tomorrow
+
+# Status quo
 
 ## Species and Structure
 
-| Species        | \~Age (Years) | N / ha | G (m²) | Misc          |
-|----------------|---------------|--------|--------|---------------|
-| Scots Pine     | 120           | 282    | 31     | Dominant      |
-| European Beech | 60            | 525    | 9      | Second Layer  |
-| Norway Spruce  | 40            | 525    | .6     | Planted Group |
-| Sessile Oak    | 40            | 18     | .2     | Single Trees  |
+| Species        | \~Age (Years) | Structural unit |
+|----------------|---------------|-----------------|
+| Scots Pine     | 120           | Dominant        |
+| European Beech | 60            | Second layer    |
+| Norway Spruce  | 40            | Planted Group   |
+| Sessile Oak    | 40            | Single Trees    |
 
 ## Climate and nutrition
 
@@ -26,15 +42,138 @@ format:
 |-----------------|----------|------------------------|
 | Growth District | 99.10.19 | Tramper Platte         |
 | Soil freshness  | m        | Medium fresh           |
-| Nutrition       | M2       | Slightly better Medium |
+| Nutrition       | M2       | Slightly better medium |
 
 ## Mixture Recommendation
 
 [Brandenburg Species Mixture Recommendation](https://www.brandenburg-forst.de/bmt/baumartenmischungstabelle.pdf)
 
-| Species        | Mixture class |
-|----------------|---------------|
-| Scots pine     | \> 50 %       |
-| European Beech | \> 50 %       |
-| Norway Spruce  | 0 %           |
-| Sessile Oak    | \> 50 %       |
+| Species        | Mixture class (%) |
+|----------------|-------------------|
+| Scots pine     | \<= 50            |
+| European Beech | \<= 50            |
+| Norway Spruce  | 0                 |
+| Sessile Oak    | \<= 50            |
+
+## Stakeholder
+
+-   Private owner
+-   "Set in and forget it"
+-   Passive income
+-   Pension fund
+-   Resilience and sustainability
+    -   as long as it's easy
+    -   should be reflected in the resale value
+
+## Target mixture
+
+| Species        | Mixture (%) |
+|----------------|-------------|
+| Scots pine     | 40          |
+| European Beech | 20          |
+| Norway Spruce  | 0           |
+| Sessile Oak    | 40          |
+
+# Modeling
+
+## Timeframe
+
+50 Years = 11 Periods
+
+## Initial tree stand parameters
+
+| Species         | N / ha | G (m²) |
+|-----------------|--------|--------|
+| Scots pine      | 282    | 31     |
+| European beech  | 525    | 9      |
+| Norway spruce   | 28     | .6     |
+| Sessile oak[^1] | 18     | .2     |
+
+[^1]: $d_g$ was set manually to $12\ cm$
+
+## Initial tree stand side view
+
+![](images/clipboard-3151039234.png){fig-align="center"}
+
+## Initial tree stand top view
+
+![](images/init_top_crop.png){fig-align="center"}
+
+## Thinning parameters {.center}
+
+## BAS - Business as usual
+
+-   No Management
+
+## SIAFI - Set it and forget it
+
+### Future Crop Trees
+
+| Parameter Class | Parameter            | Value   |
+|-----------------|----------------------|---------|
+| Frequency       | Thinning periods     | 5 years |
+| Intensity       | Release radius       | 4 m     |
+|                 | Max. thinning volume | 150 m³  |
+
+## SIAFI - Set it and forget it
+
+| Species        | Future Crop Trees [^2] / ha | Thinning regime        |
+|----------------|-----------------------------|------------------------|
+| Scots pine     | 80                          | light                  |
+| European beech | 22                          | heavy                  |
+| Norway spruce  | 0                           | light                  |
+| Sessile oak    | 40                          | no direct thinning[^3] |
+
+[^2]: $(N\ \text{Future trees monoculture})_i \times (\text{Target proportion})_i$ // $i = Species$
+
+[^3]: Summand = 0
+
+## HE - High effort
+
+### Selective thinning
+
+| Parameter Class | Parameter                | Value    |
+|-----------------|--------------------------|----------|
+| Frequency       | Thinning periods         | 5 years  |
+| Intensity       | Tree numbers             | variable |
+|                 | Max. thinning volume     | 150 m³   |
+|                 | A-Value                  | Strong   |
+|                 | Species thinning regimes | = SIAFI  |
+
+# Outcomes
+
+## BAS
+
+::::: columns
+::: {.column width="50%"}
+![Initial](images/init_top_crop.png){fig-align="left"}
+:::
+
+::: {.column width="50%"}
+![BAS](images/sim_bas_top_crop.png){fig-align="right"}
+:::
+:::::
+
+## SIAFI
+
+::::: columns
+::: {.column width="50%"}
+![Initial](images/init_top_crop.png)
+:::
+
+::: {.column width="50%"}
+![SIAFI](images/sim_siafi_top_crop.png)
+:::
+:::::
+
+## HE
+
+::::: columns
+::: {.column width="50%"}
+![Initial](images/init_top_crop.png)
+:::
+
+::: {.column width="50%"}
+![HE](images/sim_he_top_crop.png)
+:::
+:::::

@@ -9,7 +9,7 @@
 <link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.25">
 
-  <meta name="author" content="Max Hachemeister">
+  <meta name="author" content="Max Hachemeister, Aparna Ajayan, Olajide Faneye">
   <title>Forest Management and Modeling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,27 +28,7 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link href="presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -152,7 +132,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Max Hachemeister 
+Max Hachemeister, Aparna Ajayan, Olajide Faneye 
 </div>
 </div>
 </div>
@@ -161,18 +141,31 @@ Max Hachemeister
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li><a href="#/the-stand" id="/toc-the-stand">The stand</a>
-<ul>
-<li><a href="#/species-and-structure" id="/toc-species-and-structure">Species and Structure</a></li>
-<li><a href="#/climate-and-nutrition" id="/toc-climate-and-nutrition">Climate and nutrition</a></li>
-<li><a href="#/mixture-recommendation" id="/toc-mixture-recommendation">Mixture Recommendation</a></li>
-</ul></li>
+<li><a href="#/instructions" id="/toc-instructions">Instructions</a></li>
+<li><a href="#/status-quo" id="/toc-status-quo">Status quo</a></li>
+<li><a href="#/modeling" id="/toc-modeling">Modeling</a></li>
+<li><a href="#/outcomes" id="/toc-outcomes">Outcomes</a></li>
 </ul>
 </nav>
 </section>
+<section id="instructions" class="title-slide slide level1 center">
+<h1>Instructions</h1>
+<ul>
+<li><p>Every first or second level heading makes a new slide</p></li>
+<li><p>No more than 7 to 8 lines per Slide</p></li>
+<li><p>Insert images</p>
+<ul>
+<li><p>upload them into the “images” folder</p></li>
+<li><p>add from there</p></li>
+</ul></li>
+<li><p>The slides will basically look like this document already does.</p></li>
+<li><p>I will fit it all for tomorrow</p></li>
+</ul>
+</section>
+
 <section>
-<section id="the-stand" class="title-slide slide level1 center">
-<h1>The stand</h1>
+<section id="status-quo" class="title-slide slide level1 center">
+<h1>Status quo</h1>
 
 </section>
 <section id="species-and-structure" class="slide level2">
@@ -182,38 +175,28 @@ Max Hachemeister
 <tr class="header">
 <th>Species</th>
 <th>~Age (Years)</th>
-<th>N / ha</th>
-<th>G (m²)</th>
-<th>Misc</th>
+<th>Structural unit</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Scots Pine</td>
 <td>120</td>
-<td>282</td>
-<td>31</td>
 <td>Dominant</td>
 </tr>
 <tr class="even">
 <td>European Beech</td>
 <td>60</td>
-<td>525</td>
-<td>9</td>
-<td>Second Layer</td>
+<td>Second layer</td>
 </tr>
 <tr class="odd">
 <td>Norway Spruce</td>
 <td>40</td>
-<td>525</td>
-<td>.6</td>
 <td>Planted Group</td>
 </tr>
 <tr class="even">
 <td>Sessile Oak</td>
 <td>40</td>
-<td>18</td>
-<td>.2</td>
 <td>Single Trees</td>
 </tr>
 </tbody>
@@ -243,53 +226,317 @@ Max Hachemeister
 <tr class="odd">
 <td>Nutrition</td>
 <td>M2</td>
-<td>Slightly better Medium</td>
+<td>Slightly better medium</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="mixture-recommendation" class="slide level2 smaller scrollable">
+<section id="mixture-recommendation" class="slide level2">
 <h2>Mixture Recommendation</h2>
-<p><a href="https://www.brandenburg-forst.de/bmt/baumartenmischungstabelle.pdf">Brandenburg Species Mixture Recommendation</a><a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></p>
+<p><a href="https://www.brandenburg-forst.de/bmt/baumartenmischungstabelle.pdf">Brandenburg Species Mixture Recommendation</a></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th>Species</th>
-<th>Mixture class</th>
+<th>Mixture class (%)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Scots pine</td>
-<td>&gt; 50 %</td>
+<td>&lt;= 50</td>
 </tr>
 <tr class="even">
 <td>European Beech</td>
-<td>&gt; 50 %</td>
+<td>&lt;= 50</td>
 </tr>
 <tr class="odd">
 <td>Norway Spruce</td>
-<td>0 %</td>
+<td>0</td>
 </tr>
 <tr class="even">
 <td>Sessile Oak</td>
-<td>&gt; 50 %</td>
+<td>&lt;= 50</td>
 </tr>
 </tbody>
 </table>
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-lfbEmpfehlungenZurMischung2024" class="csl-entry" role="listitem">
-LFB. 2024. <span>“Empfehlungen Zur Mischung von Baum- Und Straucharten Im Wald.”</span> Edited by Ministerium für Landwirtschaft, Umwelt und Klimaschutz des Landes Brandenburg, December. <a href="https://www.brandenburg-forst.de/bmt/baumartenmischungstabelle.pdf">https://www.brandenburg-forst.de/bmt/baumartenmischungstabelle.pdf</a>.
-</div>
-</div>
-<aside></aside></section></section>
-<section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><span class="citation" data-cites="lfbEmpfehlungenZurMischung2024">(<a href="#/mixture-recommendation" role="doc-biblioref" onclick="">LFB 2024</a>)</span></p></li>
-</ol>
 </section>
+<section id="stakeholder" class="slide level2">
+<h2>Stakeholder</h2>
+<ul>
+<li>Private owner</li>
+<li>“Set in and forget it”</li>
+<li>Passive income</li>
+<li>Pension fund</li>
+<li>Resilience and sustainability
+<ul>
+<li>as long as it’s easy</li>
+<li>should be reflected in the resale value</li>
+</ul></li>
+</ul>
+</section>
+<section id="target-mixture" class="slide level2">
+<h2>Target mixture</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Species</th>
+<th>Mixture (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scots pine</td>
+<td>40</td>
+</tr>
+<tr class="even">
+<td>European Beech</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Norway Spruce</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Sessile Oak</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="modeling" class="title-slide slide level1 center">
+<h1>Modeling</h1>
+
+</section>
+<section id="timeframe" class="slide level2">
+<h2>Timeframe</h2>
+<p>50 Years = 11 Periods</p>
+</section>
+<section id="initial-tree-stand-parameters" class="slide level2">
+<h2>Initial tree stand parameters</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Species</th>
+<th>N / ha</th>
+<th>G (m²)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scots pine</td>
+<td>282</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td>European beech</td>
+<td>525</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>Norway spruce</td>
+<td>28</td>
+<td>.6</td>
+</tr>
+<tr class="even">
+<td>Sessile oak<sup>1</sup></td>
+<td>18</td>
+<td>.2</td>
+</tr>
+</tbody>
+</table>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><span class="math inline">\(d_g\)</span> was set manually to <span class="math inline">\(12\ cm\)</span></p></li></ol></aside></section>
+<section id="initial-tree-stand-side-view" class="slide level2">
+<h2>Initial tree stand side view</h2>
+
+<img data-src="images/clipboard-3151039234.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="initial-tree-stand-top-view" class="slide level2">
+<h2>Initial tree stand top view</h2>
+
+<img data-src="images/init_top_crop.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="thinning-parameters" class="slide level2 center">
+<h2>Thinning parameters</h2>
+</section>
+<section id="bas---business-as-usual" class="slide level2">
+<h2>BAS - Business as usual</h2>
+<ul>
+<li>No Management</li>
+</ul>
+</section>
+<section id="siafi---set-it-and-forget-it" class="slide level2">
+<h2>SIAFI - Set it and forget it</h2>
+<h3 id="future-crop-trees">Future Crop Trees</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Parameter Class</th>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frequency</td>
+<td>Thinning periods</td>
+<td>5 years</td>
+</tr>
+<tr class="even">
+<td>Intensity</td>
+<td>Release radius</td>
+<td>4 m</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Max. thinning volume</td>
+<td>150 m³</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="siafi---set-it-and-forget-it-1" class="slide level2">
+<h2>SIAFI - Set it and forget it</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 42%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Species</th>
+<th>Future Crop Trees <sup>1</sup> / ha</th>
+<th>Thinning regime</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scots pine</td>
+<td>80</td>
+<td>light</td>
+</tr>
+<tr class="even">
+<td>European beech</td>
+<td>22</td>
+<td>heavy</td>
+</tr>
+<tr class="odd">
+<td>Norway spruce</td>
+<td>0</td>
+<td>light</td>
+</tr>
+<tr class="even">
+<td>Sessile oak</td>
+<td>40</td>
+<td>no direct thinning<sup>2</sup></td>
+</tr>
+</tbody>
+</table>
+<aside><ol class="aside-footnotes"><li id="fn2"><p><span class="math inline">\((N\ \text{Future trees monoculture})_i \times (\text{Target proportion})_i\)</span> // <span class="math inline">\(i = Species\)</span></p></li><li id="fn3"><p>Summand = 0</p></li></ol></aside></section>
+<section id="he---high-effort" class="slide level2">
+<h2>HE - High effort</h2>
+<h3 id="selective-thinning">Selective thinning</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Parameter Class</th>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frequency</td>
+<td>Thinning periods</td>
+<td>5 years</td>
+</tr>
+<tr class="even">
+<td>Intensity</td>
+<td>Tree numbers</td>
+<td>variable</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Max. thinning volume</td>
+<td>150 m³</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>A-Value</td>
+<td>Strong</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Species thinning regimes</td>
+<td>= SIAFI</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="outcomes" class="title-slide slide level1 center">
+<h1>Outcomes</h1>
+
+</section>
+<section id="bas" class="slide level2">
+<h2>BAS</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="images/init_top_crop.png"></p>
+<figcaption>Initial</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/sim_bas_top_crop.png"></p>
+<figcaption>BAS</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="siafi" class="slide level2">
+<h2>SIAFI</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/init_top_crop.png"></p>
+<figcaption>Initial</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sim_siafi_top_crop.png"></p>
+<figcaption>SIAFI</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="he" class="slide level2">
+<h2>HE</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/init_top_crop.png"></p>
+<figcaption>Initial</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sim_he_top_crop.png"></p>
+<figcaption>HE</figcaption>
+</figure>
+</div>
+</div></div>
+
+</section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
