@@ -7,6 +7,8 @@ format:
     toc-depth: 1
     transition: slide
     bibliography: references.bib
+  pptx:
+    toc: true
 ---
 
 # Instructions
@@ -73,6 +75,37 @@ format:
 | European Beech | 20          |
 | Norway Spruce  | 0           |
 | Sessile Oak    | 40          |
+
+## Ecological characteristics of the tree species
+
+![](images/species_characters.png){fig-align="center"}
+
+## Species behaviour in monoculture stands {.smaller}
+
+::::: columns
+::: {.column .center width="50%"}
+-   Scots Pine grows well on poor soils, uniform stands, and have a high drought and pest vulnerability.
+-   European Beech dense canopy and quality timber, drought sensitive, limited regeneration on dry sites.
+-   Sessile Oak: valuable hardwood, requires light, regeneration difficult, risk from insects. Norway Spruce: fast growth, high yield, prone to storms and bark beetles.
+:::
+
+::: {.column width="50%"}
+![](images/oak_pine_mono.png){fig-align="center" width="60%"}
+:::
+:::::
+
+## Synergies in mixed stands
+
+![](images/interactions.png){fig-align="center"}
+
+## Trade off and competition on mixed stands
+
+-   Beech/Pine: Beech overtops pine over time
+-   Oak/Beech: Oak needs more light.
+-   Spruce competes with beech for moisture because it performs poorly on dry soils.
+-   There is the need for proper management to balance competition and maintain mixture stability.
+
+**Key point**: from Pine monoculture to resilient mixed forest
 
 # Modeling
 
