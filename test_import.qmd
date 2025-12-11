@@ -8,17 +8,34 @@ editor: visual
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-```{r}
+```{r setup}
 library(tidyverse)
-
+library(readr)
+set_theme(theme_light())
 ```
 
 ```{r}
+bas_results <-
+    read_delim(
+      "data/bas_results.txt", 
+      delim = "\t", escape_double = FALSE, 
+      trim_ws = TRUE
+      )
+```
+
+
+```{r}
 bas_results |> 
-  mutate(Bestand = "bas") |> 
+  filter(Baumart == "Alle Arten") |> 
+  mutate(Bestand = "bas") |>
   select(c(Bestand, Periode, Baumart, GWertL)) |> 
-  ggplot(aes(Periode, GWertL, color = Baumart)) +
-  geom_line()
-
-
+  mutate(Periode = Periode * 5) |> 
+  ggplot(aes(Periode, GWertL)) +
+  geom_line() +
+  scale_y_continuous(labels = scales::label_currency(prefix = "€")) +
+  labs(
+    y = "Total stand value",
+    x = "Elapsed time",
+    # color = "Tree species",
+  )
 ```
