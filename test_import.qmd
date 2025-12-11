@@ -8,34 +8,73 @@ editor: visual
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
+## Prerequisites
 ```{r setup}
 library(tidyverse)
 library(readr)
 set_theme(theme_light())
 ```
 
+## Import and tidy data
 ```{r}
-bas_results <-
+results_bas <-
     read_delim(
       "data/bas_results.txt", 
       delim = "\t", escape_double = FALSE, 
       trim_ws = TRUE
       )
+
+results_siafi <- 
+    read_delim(
+      "data/siafi_results.txt", 
+      delim = "\t", escape_double = FALSE, 
+      trim_ws = TRUE
+      )
+
+results_he <- 
+    read_delim(
+      "data/he_results.txt", 
+      delim = "\t", escape_double = FALSE, 
+      trim_ws = TRUE
+      )
+
+results <- 
+  bind_rows(
+    list(
+      bas = results_bas,
+      he = results_he,
+      siafi = results_siafi),
+    .id = "strategy") |> 
+  janitor::clean_names()
 ```
 
 
 ```{r}
-bas_results |> 
-  filter(Baumart == "Alle Arten") |> 
-  mutate(Bestand = "bas") |>
-  select(c(Bestand, Periode, Baumart, GWertL)) |> 
-  mutate(Periode = Periode * 5) |> 
-  ggplot(aes(Periode, GWertL)) +
-  geom_line() +
-  scale_y_continuous(labels = scales::label_currency(prefix = "€")) +
-  labs(
-    y = "Total stand value",
-    x = "Elapsed time",
-    # color = "Tree species",
+parameters <- 
+  c(
+    g_wert_l = "Gross total value",
+    wert_a = "Gross harvested value ",
+    clark_evans = "Clark evans index"
   )
+
+results |> 
+  filter(baumart == "Alle Arten") |> 
+  select(c(strategy, periode, baumart, g_wert_l, wert_a, clark_evans)) |>
+  pivot_longer(g_wert_l:clark_evans,
+               names_to = "parameter",
+               values_to = "value") |> 
+  mutate(periode = (periode -1) * 5,
+         strategy = str_to_upper(strategy)) |> 
+  ggplot(aes(periode, value, color = strategy)) +
+  geom_line(linewidth = .66) +
+  # scale_y_continuous(labels = scales::label_currency(prefix = "€"),
+  #                    breaks = scales::breaks_extended(10)) +
+  labs(
+    y = "Value",
+    x = "Elapsed years",
+    color = "Silvic strategy"
+  ) +
+  scale_color_discrete(palette = "set2") +
+  facet_wrap(~parameter, scales = "free",
+             labeller = labeller(parameter = parameters))
 ```
