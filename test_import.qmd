@@ -20,7 +20,8 @@ set_theme(theme_light())
 results_bas <-
     read_delim(
       "data/bas_results.txt", 
-      delim = "\t", escape_double = FALSE, 
+      delim = "\t", escape_double = FALSE,
+      show_col_types = FALSE,
       trim_ws = TRUE
       )
 
@@ -28,6 +29,7 @@ results_siafi <-
     read_delim(
       "data/siafi_results.txt", 
       delim = "\t", escape_double = FALSE, 
+      show_col_types = FALSE,
       trim_ws = TRUE
       )
 
@@ -35,46 +37,76 @@ results_he <-
     read_delim(
       "data/he_results.txt", 
       delim = "\t", escape_double = FALSE, 
+      show_col_types = FALSE,
       trim_ws = TRUE
       )
 
 results <- 
   bind_rows(
     list(
-      bas = results_bas,
-      he = results_he,
+      bas   = results_bas,
+      he    = results_he,
       siafi = results_siafi),
     .id = "strategy") |> 
-  janitor::clean_names()
+  janitor::clean_names() |> 
+  select(-bestand)
 ```
 
 
 ```{r}
 parameters <- 
   c(
-    g_wert_l = "Gross total value",
-    wert_a = "Gross harvested value ",
-    clark_evans = "Clark evans index"
+    g_wert_l    = "Economic yield (€)",
+    wert_a      = "Net realizable value, harvested (€)",
+    artprofil   = "mod. Shannon-Index",
+    wert_v      = "Net realizable value, standing (€)"
   )
 
 results |> 
   filter(baumart == "Alle Arten") |> 
-  select(c(strategy, periode, baumart, g_wert_l, wert_a, clark_evans)) |>
-  pivot_longer(g_wert_l:clark_evans,
-               names_to = "parameter",
+  select(strategy, periode, baumart,
+           wert_a, wert_v, g_wert_l, artprofil) |>
+  mutate(
+    g_wert_l = case_when(strategy == "bas" ~ wert_v,
+                          TRUE ~ g_wert_l),
+    periode  = (periode - 1) * 5,
+    strategy = str_to_upper(strategy)) |> 
+  pivot_longer(wert_a:artprofil,
+               names_to  = "parameter",
                values_to = "value") |> 
-  mutate(periode = (periode -1) * 5,
-         strategy = str_to_upper(strategy)) |> 
-  ggplot(aes(periode, value, color = strategy)) +
+  ggplot(aes(periode, value, linetype = strategy, color = strategy)) +
   geom_line(linewidth = .66) +
   # scale_y_continuous(labels = scales::label_currency(prefix = "€"),
   #                    breaks = scales::breaks_extended(10)) +
   labs(
-    y = "Value",
-    x = "Elapsed years",
-    color = "Silvic strategy"
+    y        = "Value",
+    x        = "Elapsed years",
+    color    = "Silvic strategy",
+    linetype = "Silvic strategy"
   ) +
   scale_color_discrete(palette = "set2") +
+  scale_y_continuous(labels = scales::label_comma()) +
+  theme(text = element_text(size   = 10,
+                            family = "DejaVu Serif")) +
   facet_wrap(~parameter, scales = "free",
              labeller = labeller(parameter = parameters))
+
+
+ggsave("~/Nextcloud/1_projects/Forest_Management_Group/images/plot_results.png",
+       units = "mm",
+       height = 210/2,
+       width = (210 * (16/9))/2
+       )
+```
+
+Reducing the BAS strategy with the lost winnings from not selling the thinnings.
+```{r}
+results |> 
+  filter(baumart == "Alle Arten") |> 
+  group_by(strategy) |> 
+  summarise(
+    n = n(),
+    thinning_win = sum(wert_a),
+    g_wert_l = max(g_wert_l)) |> 
+  mutate(g_wert_real = if_else(strategy == "bas", g_wert_l - thinning_win, g_wert_l))
 ```
