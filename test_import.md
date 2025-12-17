@@ -1,22 +1,19 @@
----
-title: "test_import"
-format: gfm
-editor: visual
----
+# test_import
+
 
 ## Prerequisites
-```{r setup}
-#| output: false
 
+``` r
 library(tidyverse)
 library(readr)
 set_theme(theme_light())
 update_theme(text = element_text(size   = 10,
-                                 family = "DejaVu Serif"))
+                            family = "DejaVu Serif"))
 ```
 
 ## Import and tidy data
-```{r}
+
+``` r
 results_bas <-
     read_delim(
       "data/bas_results.txt", 
@@ -55,11 +52,9 @@ results <-
     strategy = fct_relevel(fct(strategy), "BAS", "SIAFI", "HE"))
 ```
 
+## Merge and plot
 
-## Plot
-
-
-```{r}
+``` r
 parameters <- 
   c(
     g_wert_l    = "Economic yield (€)",
@@ -93,10 +88,11 @@ results |>
              labeller = labeller(parameter = parameters))
 ```
 
-### Save plot for document
-```{r}
-#| eval: false
+![](test_import_files/figure-commonmark/unnamed-chunk-2-1.png)
 
+### Save plot for document
+
+``` r
 ggsave("~/Nextcloud/1_projects/Forest_Management_Group/images/plot_results.png",
        units = "mm",
        height = 210/2,
@@ -104,10 +100,9 @@ ggsave("~/Nextcloud/1_projects/Forest_Management_Group/images/plot_results.png",
        )
 ```
 
-
 ## Create an overview
 
-```{r}
+``` r
 overview <- 
   results |> 
     filter(baumart == "Alle Arten") |> 
@@ -133,18 +128,21 @@ overview <-
     left_join(overview,
               by = "strategy") |> 
     relocate(nrv_h, nrv_s, economic_yield_real, shannon_index,
-             .before = economic_yield) |> 
-  select(-economic_yield)
+             .before = economic_yield)
 
 overview
-
-writexl::write_xlsx(overview, path = "~/Nextcloud/1_projects/Forest_Management_Group/data/overview.xlsx")
 ```
 
+    # A tibble: 3 × 6
+      strategy nrv_h nrv_s economic_yield_real shannon_index economic_yield
+      <fct>    <dbl> <dbl>               <dbl>         <dbl>          <dbl>
+    1 BAS      17096 27455               27456          1.08          44552
+    2 HE        7836 39187               47023          0.92          47023
+    3 SIAFI     9993 33655               43648          1.13          43648
 
 ### Plot the overview
 
-```{r}
+``` r
 overview |> 
   pivot_longer(-c(strategy, economic_yield, shannon_index), 
                names_to = "param",
@@ -157,3 +155,5 @@ overview |>
        y = NULL,
        fill = "Strategy")
 ```
+
+![](test_import_files/figure-commonmark/unnamed-chunk-5-1.png)
