@@ -6,26 +6,8 @@ format:
     toc: true
     toc-depth: 1
     transition: slide
-    bibliography: references.bib
-  pptx:
-    toc: true
+    slide-number: true
 ---
-
-# Instructions
-
--   Every first or second level heading makes a new slide
-
--   No more than 7 to 8 lines per Slide
-
--   Insert images
-
-    -   upload them into the "images" folder
-
-    -   add from there
-
--   The slides will basically look like this document already does.
-
--   I will fit it all for tomorrow
 
 # Status quo
 
@@ -76,11 +58,13 @@ format:
 | Norway Spruce  | 0           |
 | Sessile Oak    | 40          |
 
-## Ecological characteristics of the tree species
+# Ecological characteristics of the tree species
+
+## Tree species
 
 ![](images/species_characters.png){fig-align="center"}
 
-## Species behaviour in monoculture stands {.smaller}
+## Behaviour in monoculture stands {.smaller}
 
 ::::: columns
 ::: {.column .center width="50%"}
@@ -98,7 +82,7 @@ format:
 
 ![](images/interactions.png){fig-align="center"}
 
-## Trade off and competition on mixed stands
+## Trade-offs and competition in mixed stands
 
 -   Beech/Pine: Beech overtops pine over time
 -   Oak/Beech: Oak needs more light.
@@ -107,11 +91,107 @@ format:
 
 **Key point**: from Pine monoculture to resilient mixed forest
 
+# Silvicultural strategies
+
+## Business as usual (BAS) {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   Non-intervention approach; stand develops naturally.
+
+-   Relies on succession, mortality, and regeneration.
+
+-   Minimal management cost and labor required.
+
+-   Used as a control or baseline scenario.
+
+-   Risk of instability and poor timber quality.
+
+-   Beech regeneration limited under dense pine canopy.
+
+-   Natural growth → Self-thinning → Harvest
+:::
+
+::: {.column width="50%"}
+![](images/apa_unmanaged_natural_pine.jpg){fig-align="center"}
+:::
+:::::
+
+## Set it and forget it (SIAFI) {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   Low-maintenance method for long-term sustainability.
+
+-   Identify and mark future crop trees early (Z-Bäume).
+
+-   Release them from competition every five years.
+
+-   Balance between management cost and growth quality.
+
+-   Species-specific thinning applied by intensity.
+
+-   Promotes quality target trees with limited intervention
+
+-   Crop tree selection → Competitor removal → Monitoring → Repeat
+:::
+
+::: {.column width="50%"}
+![](images/apa_zbaum_method.jpg){fig-align="center"}
+:::
+:::::
+
+## High effort (HE) {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   Intensive management with strong release thinnings.
+
+-   Select and monitor high-potential crop trees.
+
+-   Adjust thinning intensity dynamically per growth response.
+
+-   Repeat thinning every five years, adaptive approach.
+
+-   Maximizes timber quality and regeneration success.
+
+-   High labor and supervision cost required.
+
+-   Risk of instability if over-thinned
+
+-   Dynamic crop tree selection → Strong release thinning → Monitoring → Repeat
+:::
+
+::: {.column width="50%"}
+![](images/apa_thinning.png){fig-align="center"}
+:::
+:::::
+
+## Comparison of BAS, SIAFI, and HE {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   BAS: Natural development, low cost, slow results.
+
+-   SIAFI: Moderate effort, sustainable long-term option.
+
+-   HE: High cost but fast and flexible regeneration.
+
+-   Beech regeneration: slow → moderate → fast.
+
+-   Biodiversity improvement: low → medium → high.
+
+-   Management intensity: minimal → moderate → high.
+
+-   Choice depends on ecological and economic goals.
+:::
+
+::: {.column width="50%"}
+![](images/apa_thinning_principles.png){fig-align="center"}
+:::
+:::::
+
 # Modeling
-
-## Timeframe
-
-50 Years = 11 Periods
 
 ## Initial tree stand parameters
 
@@ -134,11 +214,15 @@ format:
 
 ## Thinning parameters {.center}
 
-## BAS - Business as usual
+## Timeframe
+
+-   50 Years = 11 Periods
+
+## BAS
 
 -   No Management
 
-## SIAFI - Set it and forget it
+## SIAFI
 
 ### Future Crop Trees
 
@@ -148,7 +232,7 @@ format:
 | Intensity       | Release radius       | 4 m     |
 |                 | Max. thinning volume | 150 m³  |
 
-## SIAFI - Set it and forget it
+## SIAFI
 
 | Species        | Future Crop Trees [^2] / ha | Thinning regime        |
 |----------------|-----------------------------|------------------------|
@@ -161,7 +245,7 @@ format:
 
 [^3]: Summand = 0
 
-## HE - High effort
+## HE
 
 ### Selective thinning
 
@@ -210,3 +294,11 @@ format:
 ![HE](images/sim_he_top_crop.png)
 :::
 :::::
+
+## Comparison
+
+![](plot.png){fig-align="center"}
+
+# Questions and remarks {.unnumbered .unlisted}
+
+# Thanks! {.unnumbered .unlisted}

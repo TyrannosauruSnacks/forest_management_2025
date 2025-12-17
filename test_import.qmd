@@ -14,6 +14,26 @@ library(tidyverse)
 ```
 
 ```{r}
+plot <- 
+siafi_results %>% 
+  mutate(Bestand = "SIAFI") %>% 
+  bind_rows(bas_results %>% mutate(Bestand = "BAS")) %>% 
+  select(Bestand, Baumart, Periode, GWertL, Wert.a.) %>% 
+  pivot_longer(c(GWertL, Wert.a.)) %>% 
+  filter(Baumart == "Alle Arten") %>% 
+  ggplot(aes(Periode, value, color = Bestand)) +
+  geom_line() +
+  facet_wrap(~name,
+             scales = "free")
+
+ggsave("plot.png",
+       units = "mm",
+       width = 297,
+       height = 210
+       )
+```
+
+```{r}
 bas_results |> 
   mutate(Bestand = "bas") |> 
   select(c(Bestand, Periode, Baumart, GWertL)) |> 
